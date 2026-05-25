@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warlords – Laser Tag, Gel Blaster, Nerf | Neon Tank Arena Bratislava</title>
+  <meta name="description" content="Warlords – čisté bojové aktivity bez bolesti. Laser Tag, Gel Blaster a Nerf pre deti, rozlúčky so slobodou a teambuildingy v NEON TANK ARENA Bratislava." />
+  <meta property="og:title" content="Warlords – Laser Tag, Gel Blaster, Nerf" />
+  <meta property="og:description" content="Adrenalín bez bolesti. Ideálne pre detské oslavy, rozlúčky a teambuildingy." />
+  <meta property="og:image" content="og-image.jpg" />
+  <link rel="icon" href="Warlords Nove + Laser/PNG/Warlords logo - vertical.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=Permanent+Marker&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+
+      <a href="#hero" class="nav-logo">
+        <img src="Warlords Nove + Laser/PNG/Warlords logo - horizontal - inverse.png"
+             alt="Warlords" class="nav-logo-img" />
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+
+        <div class="nav-dropdown">
+          <a href="#aktivity" data-i18n="nav_activities">Aktivity</a>
+          <div class="dropdown-menu">
+            <a href="#lasertag" data-i18n="nav_lasertag">Laser Tag</a>
+            <a href="#gelblaster" data-i18n="nav_gelblaster">Gel Blaster</a>
+            <a href="#nerf" data-i18n="nav_nerf">Nerf</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="#eventy" data-i18n="nav_events">Eventy</a>
+          <div class="dropdown-menu">
+            <a href="#eventy" data-i18n="nav_kids">Detské oslavy</a>
+            <a href="#eventy" data-i18n="nav_bachelor">Rozlúčky so slobodou</a>
+            <a href="#eventy" data-i18n="nav_team">Teambuilding</a>
+          </div>
+        </div>
+
+        <a href="#cennik" data-i18n="nav_pricing">Cenník</a>
+        <a href="#preco" data-i18n="nav_about">O nás</a>
+
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="sk">SK</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+
+        <a href="rezervacia.html" class="btn btn-primary" data-i18n="nav_book">Rezervovať</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-overlay"></div>
+
+    <div class="container hero-content">
+      <div class="hero-badge" data-i18n="hero_badge">Neon Tank Arena · Bratislava · Bez bolesti</div>
+
+      <h1 class="hero-title">
+        <span class="accent-gold" data-i18n="hero_title_1">Bojuj.</span>
+        <span class="accent-blue" data-i18n="hero_title_2"> Vyhraj.</span><br/>
+        <span data-i18n="hero_title_3">Bez bolesti.</span>
+      </h1>
+
+      <p class="hero-subtitle" data-i18n="hero_sub">
+        Laser Tag, Gel Blaster a Nerf — adrenalín bez modlín. Ideálne pre <strong>detské oslavy</strong>, <strong>rozlúčky so slobodou</strong> a <strong>firemné teambuildingy</strong>.
+      </p>
+
+      <div class="hero-pills">
+        <span class="hero-pill hero-pill-blue">⚡ Laser Tag</span>
+        <span class="hero-pill hero-pill-teal">💧 Gel Blaster</span>
+        <span class="hero-pill hero-pill-orange">🎯 Nerf</span>
+      </div>
+
+      <div class="hero-actions">
+        <a href="rezervacia.html" class="btn btn-primary btn-lg" data-i18n="hero_btn_book">Rezervovať termín</a>
+        <a href="#aktivity" class="btn btn-outline btn-lg" data-i18n="hero_btn_discover">Pozrieť aktivity</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>500+</strong>
+          <span data-i18n="hero_stat_players">Spokojných hráčov</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <strong>3</strong>
+          <span data-i18n="hero_stat_activities">Aktivity</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <strong>5★</strong>
+          <span data-i18n="hero_stat_location">NEON TANK ARENA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ACTIVITIES
+       ============================================================ -->
+  <section class="section" id="aktivity">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-tag" data-i18n="activities_tag">Naše aktivity</div>
+        <h2 data-i18n="activities_title">Vyber si svoju zbraň</h2>
+        <p data-i18n="activities_sub">Každá aktivita je bezpečná, vhodná pre každý vek a garantuje nezabudnuteľný zážitok.</p>
+      </div>
+
+      <div class="activities-grid">
+
+        <!-- LASER TAG -->
+        <div class="activity-card fade-in" data-accent="blue" id="lasertag">
+          <div class="card-top">
+            <div class="card-top-bg"></div>
+            <div class="card-brand-block">
+              <img src="Warlords Nove + Laser/PNG/Warlords logo - horizontal - inverse.png"
+                   alt="Warlords" class="card-brand-logo" />
+              <div class="card-activity-label" style="color:var(--blue)">Laser Tag</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Laser Tag</h3>
+            <p class="card-tagline" data-i18n="lt_tagline">Futuristický boj s laserovými lúčmi</p>
+            <p data-i18n="lt_desc">Žiadne projektily, žiadna bolesť — len čistý taktický boj. Infračervené senzory zaznamenávajú každý zásah. Ideálne pre deti od 6 rokov aj dospelých.</p>
+            <ul class="card-features">
+              <li data-i18n="lt_f1">Od 6 rokov</li>
+              <li data-i18n="lt_f2">Bez projektlov, 100% bezpečné</li>
+              <li data-i18n="lt_f3">Vybavenie v cene</li>
+              <li data-i18n="lt_f4">Viacero herných módov</li>
+            </ul>
+            <div class="card-price">
+              <span class="price-from" data-i18n="lt_from">od</span>
+              <span class="price-big" data-i18n="lt_price">11€</span>
+              <span class="price-label" data-i18n="lt_per">/ osoba</span>
+            </div>
+            <a href="rezervacia.html?aktivita=lasertag" class="btn btn-activity-blue btn-full">
+              <span data-i18n="nav_book">Rezervovať</span> →
+            </a>
+          </div>
+        </div>
+
+        <!-- GEL BLASTER — featured center -->
+        <div class="activity-card activity-card-center fade-in" data-accent="teal" id="gelblaster">
+          <div class="card-badge" data-i18n="nerf_badge">Najpopulárnejší</div>
+          <div class="card-top">
+            <div class="card-top-bg"></div>
+            <div class="card-brand-block">
+              <img src="Warlords Nove + Laser/PNG/Warlords logo - horizontal - inverse.png"
+                   alt="Warlords" class="card-brand-logo" />
+              <div class="card-activity-label" style="color:var(--teal)">Gel Blaster</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Gel Blaster</h3>
+            <p class="card-tagline" data-i18n="gb_tagline">Vodné guľky — realistický zážitok bez bolesti</p>
+            <p data-i18n="gb_desc">Malé vodné guľky, ktoré pri dopade praskajú a zanechávajú iba mokrú stopu. Taktický realizmus bez modlín — vhodné od 6 rokov.</p>
+            <ul class="card-features">
+              <li data-i18n="gb_f1">Od 6 rokov</li>
+              <li data-i18n="gb_f2">Vodné guľky — bezpečné</li>
+              <li data-i18n="gb_f3">Ochranné okuliare v cene</li>
+              <li data-i18n="gb_f4">Taktické scenáre</li>
+            </ul>
+            <div class="card-price">
+              <span class="price-from" data-i18n="gb_from">od</span>
+              <span class="price-big" data-i18n="gb_price">18€</span>
+              <span class="price-label" data-i18n="gb_per">/ osoba</span>
+            </div>
+            <a href="rezervacia.html?aktivita=gelblaster" class="btn btn-activity-teal btn-full">
+              <span data-i18n="nav_book">Rezervovať</span> →
+            </a>
+          </div>
+        </div>
+
+        <!-- NERF -->
+        <div class="activity-card fade-in" data-accent="orange" id="nerf">
+          <div class="card-top">
+            <div class="card-top-bg"></div>
+            <div class="card-brand-block">
+              <img src="Warlords Nove + Laser/PNG/Warlords logo - horizontal - inverse.png"
+                   alt="Warlords" class="card-brand-logo" />
+              <div class="card-activity-label" style="color:var(--orange)">Nerf</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Nerf</h3>
+            <p class="card-tagline" data-i18n="nerf_tagline">Penové strely — zábava pre celú rodinu</p>
+            <p data-i18n="nerf_desc">Profi Nerf bitka s mäkkými penovými strelami. Bezpečné pre každého — od malých detí až po firemné teambuildingy.</p>
+            <ul class="card-features">
+              <li data-i18n="nerf_f1">Od 5 rokov</li>
+              <li data-i18n="nerf_f2">Penové strely, nula rizika</li>
+              <li data-i18n="nerf_f3">Prémiové zbrane k zapožičaniu</li>
+              <li data-i18n="nerf_f4">Rodiny, firmy, školy</li>
+            </ul>
+            <div class="card-price">
+              <span class="price-from" data-i18n="nerf_from">od</span>
+              <span class="price-big" data-i18n="nerf_price">18€</span>
+              <span class="price-label" data-i18n="nerf_per">/ osoba</span>
+            </div>
+            <a href="rezervacia.html?aktivita=nerf" class="btn btn-activity-orange btn-full">
+              <span data-i18n="nav_book">Rezervovať</span> →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SPECIAL EVENTS
+       ============================================================ -->
+  <section class="section events" id="eventy">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-tag" data-i18n="events_tag">Špeciálne eventy</div>
+        <h2 data-i18n="events_title">Akákoľvek oslava, jeden cieľ</h2>
+        <p data-i18n="events_sub">Postaráme sa o celý program — od herného inštruktora až po organizáciu. Ty sa len bav.</p>
+      </div>
+
+      <div class="events-grid">
+
+        <div class="event-card fade-in" style="--event-color:#FF6B6B;--event-glow:rgba(255,107,107,0.12);">
+          <div class="event-icon">🎂</div>
+          <div class="event-content">
+            <h3 data-i18n="ev_kids_title">Detské narodeniny</h3>
+            <p data-i18n="ev_kids_desc">Nezabudnuteľná oslava pre deti od 5 rokov. Inštruktor vedie celý program, chladnička a stôl pre tortu zdarma.</p>
+            <div class="event-tags">
+              <span class="event-tag" data-i18n="ev_kids_t1">Vek 5+</span>
+              <span class="event-tag" data-i18n="ev_kids_t2">Inštruktor zdarma</span>
+              <span class="event-tag" data-i18n="ev_kids_t3">Stôl + chladnička</span>
+              <span class="event-tag" data-i18n="ev_kids_t4">Nerf a Laser Tag</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card fade-in" style="--event-color:#E879A0;--event-glow:rgba(232,121,160,0.12);">
+          <div class="event-icon">💍</div>
+          <div class="event-content">
+            <h3 data-i18n="ev_bach_title">Rozlúčka so slobodou</h3>
+            <p data-i18n="ev_bach_desc">Neobyčajná rozlúčka pre nevestu aj ženícha — kostým zdarma! Ženská verzia s Gel Blasterom a Laser Tagom bez farieb a špiny.</p>
+            <div class="event-tags">
+              <span class="event-tag" data-i18n="ev_bach_t1">Kostým zdarma</span>
+              <span class="event-tag" data-i18n="ev_bach_t2">Bez farieb a bolesti</span>
+              <span class="event-tag" data-i18n="ev_bach_t3">Fotky vhodné na Instagram</span>
+              <span class="event-tag" data-i18n="ev_bach_t4">Prispôsobený program</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card fade-in" style="--event-color:#38B6FF;--event-glow:rgba(56,182,255,0.12);">
+          <div class="event-icon">🏢</div>
+          <div class="event-content">
+            <h3 data-i18n="ev_team_title">Firemný teambuilding</h3>
+            <p data-i18n="ev_team_desc">Stmeľovanie tímu cez strategické hry. Laser Tag a Gel Blaster rozvíjajú komunikáciu a súdržnosť. Fakturácia na firmu.</p>
+            <div class="event-tags">
+              <span class="event-tag" data-i18n="ev_team_t1">Min. 6 ľudí</span>
+              <span class="event-tag" data-i18n="ev_team_t2">Stratégia a komunikácia</span>
+              <span class="event-tag" data-i18n="ev_team_t3">Fakturácia na firmu</span>
+              <span class="event-tag" data-i18n="ev_team_t4">Catering na požiadanie</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card fade-in" style="--event-color:#FFB800;--event-glow:rgba(255,184,0,0.12);">
+          <div class="event-icon">🎒</div>
+          <div class="event-content">
+            <h3 data-i18n="ev_school_title">Školské výlety & skupiny</h3>
+            <p data-i18n="ev_school_desc">Bezpečná aktivita pre školy, detské tábory a mládežnícke skupiny. Inštruktori zvládnu celý program od príchodu po odchod.</p>
+            <div class="event-tags">
+              <span class="event-tag" data-i18n="ev_school_t1">Školy a tábory</span>
+              <span class="event-tag" data-i18n="ev_school_t2">Bezpečné pre deti</span>
+              <span class="event-tag" data-i18n="ev_school_t3">Skupinové ceny</span>
+              <span class="event-tag" data-i18n="ev_school_t4">Kompletný program</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY US
+       ============================================================ -->
+  <section class="section" id="preco">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-text fade-in">
+          <div class="section-tag" data-i18n="why_tag">Prečo Warlords?</div>
+          <h2 data-i18n="why_title">Adrenalín áno. Bolesť nie.</h2>
+          <p data-i18n="why_sub">Sme tím nadšencov, ktorí veria že bojový zážitok a bezpečnosť idú ruka v ruke. Všetky naše aktivity sú vhodné pre každý vek — od 5 rokov bez horného limitu.</p>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-item-icon">🛡️</div>
+              <div class="why-item-text">
+                <h4 data-i18n="why_i1_title">100% bezpečné aktivity</h4>
+                <p data-i18n="why_i1_desc">Žiadne tvrdé projektily. Laserové lúče, vodné guľky a penové strely sú navrhnuté pre maximálnu bezpečnosť.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-icon">🎓</div>
+              <div class="why-item-text">
+                <h4 data-i18n="why_i2_title">Inštruktori, nie animátori</h4>
+                <p data-i18n="why_i2_desc">Každý event vedie skúsený inštruktor, ktorý zaistí bezpečnosť aj maximálnu zábavu od začiatku do konca.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-icon">📦</div>
+              <div class="why-item-text">
+                <h4 data-i18n="why_i3_title">Všetko v cene</h4>
+                <p data-i18n="why_i3_desc">Vybavenie, ochranné pomôcky, inštruktor — žiadne skryté poplatky. Cena je cena.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-icon">⚡</div>
+              <div class="why-item-text">
+                <h4 data-i18n="why_i4_title">NEON TANK ARENA</h4>
+                <p data-i18n="why_i4_desc">Špeciálne navrhnutá indoor aréna v Bratislave. Klimatizácia, parkovanie priamo pred budovou, herné módy pre každú skupinu.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-visual fade-in">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text" data-i18n="why_review">"Úžasná narodeninová párty pre moju dcéru! Inštruktori boli super, deti sa smiali celé 2 hodiny. Určite sa vrátime!"</p>
+            <div class="review-author">
+              <div class="review-avatar">Z</div>
+              <div class="review-name">
+                <strong data-i18n="why_review_author">Zuzana M.</strong>
+                <span data-i18n="why_review_location">Bratislava</span>
+              </div>
+            </div>
+          </div>
+          <div class="review-stat-grid">
+            <div class="review-stat">
+              <strong>500+</strong>
+              <span data-i18n="why_stat1">Spokojných hráčov</span>
+            </div>
+            <div class="review-stat">
+              <strong>5.0★</strong>
+              <span data-i18n="why_stat2">Hodnotenie Google</span>
+            </div>
+            <div class="review-stat">
+              <strong>3</strong>
+              <span data-i18n="why_stat3">Aktivity</span>
+            </div>
+            <div class="review-stat">
+              <strong>5+</strong>
+              <span data-i18n="why_stat4">Vek 5+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PRICING
+       ============================================================ -->
+  <section class="section pricing" id="cennik">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-tag" data-i18n="pricing_tag">Cenník</div>
+        <h2 data-i18n="pricing_title">Transparentné ceny</h2>
+        <p data-i18n="pricing_sub">Všetko vybavenie, ochranné pomôcky a inštruktor sú zahrnuté v každom balíku. Žiadne skryté poplatky.</p>
+      </div>
+
+      <div class="pricing-tabs fade-in">
+        <button class="tab-btn active" data-tab="tab-lt" data-i18n="tab_lt">Laser Tag</button>
+        <button class="tab-btn" data-tab="tab-gb" data-i18n="tab_gb">Gel Blaster</button>
+        <button class="tab-btn" data-tab="tab-nerf" data-i18n="tab_nerf">Nerf</button>
+      </div>
+
+      <!-- LASER TAG PRICES -->
+      <div class="tab-pane active" id="tab-lt">
+        <div class="price-cards">
+          <div class="price-card fade-in">
+            <div class="price-name" data-i18n="lt_p1_name">Mini bitka</div>
+            <div class="price-amount"><span data-i18n="lt_p1_amount">11</span><span>€<span style="font-size:0.9rem;color:var(--text-muted);font-weight:400"> /os.</span></span></div>
+            <div class="price-duration" data-i18n="lt_p1_duration">30 min hry (3 × 10 min) · 1h rezervácia</div>
+            <ul class="price-features">
+              <li data-i18n="lt_p1_f1">Laserová výbava v cene</li>
+              <li data-i18n="lt_p1_f2">3 herné kolá</li>
+              <li data-i18n="lt_p1_f3">Inštruktor</li>
+              <li data-i18n="lt_p1_f4">Min. 4 hráči</li>
+              <li data-i18n="lt_p1_f5">Možnosť extra kola +4€/10min</li>
+            </ul>
+            <a href="rezervacia.html?aktivita=lasertag&balik=mini" class="btn btn-outline btn-full" data-i18n="book_btn">Rezervovať</a>
+          </div>
+
+          <div class="price-card price-card-featured fade-in">
+            <div class="price-badge" data-i18n="recommended">Odporúčané</div>
+            <div class="price-name" data-i18n="lt_p2_name">Veľká bitka</div>
+            <div class="price-amount"><span data-i18n="lt_p2_amount">18</span><span>€<span style="font-size:0.9rem;color:var(--text-muted);font-weight:400"> /os.</span></span></div>
+            <div class="price-duration" data-i18n="lt_p2_duration">60 min hry (6 × 10 min) · 2h rezervácia</div>
+            <ul class="price-features">
+              <li data-i18n="lt_p2_f1">Laserová výbava v cene</li>
+              <li data-i18n="lt_p2_f2">6 herných kôl</li>
+              <li data-i18n="lt_p2_f3">Inštruktor</li>
+              <li data-i18n="lt_p2_f4">Min. 4 hráči</li>
+              <li data-i18n="lt_p2_f5">Možnosť extra kola +4€/10min</li>
+            </ul>
+            <a href="rezervacia.html?aktivita=lasertag&balik=big" class="btn btn-primary btn-full" data-i18n="book_btn">Rezervovať</a>
+          </div>
+
+          <div class="price-card fade-in" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:16px;">
+            <div style="font-size:2.5rem;">🏢</div>
+            <h4 style="color:var(--white);" data-i18n="extra_time_title">Extra čas</h4>
+            <p style="font-size:0.9rem;" data-i18n="extra_time_desc">Pon–Štv: +40€/h &nbsp;|&nbsp; Pia–Ned: +50€/h &nbsp; za skupinu</p>
+            <a href="rezervacia.html" class="btn btn-ghost btn-full" data-i18n="book_btn">Rezervovať</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- GEL BLASTER PRICES -->
+      <div class="tab-pane" id="tab-gb">
+        <div class="price-cards">
+          <div class="price-card price-card-featured fade-in" style="max-width:400px;margin:0 auto;">
+            <div class="price-badge" data-i18n="recommended">Odporúčané</div>
+            <div class="price-name" data-i18n="gb_p1_name">Gel Blaster</div>
+            <div class="price-amount"><span data-i18n="gb_p1_amount">18</span><span>€<span style="font-size:0.9rem;color:var(--text-muted);font-weight:400"> /os.</span></span></div>
+            <div class="price-duration" data-i18n="gb_p1_duration">2 hodiny · vrátane prípravy</div>
+            <ul class="price-features">
+              <li data-i18n="gb_p1_f1">Gel Blaster + okuliare v cene</li>
+              <li data-i18n="gb_p1_f2">1 000 vodných guľok</li>
+              <li data-i18n="gb_p1_f3">Inštruktor</li>
+              <li data-i18n="gb_p1_f4">Min. 4 hráči</li>
+              <li data-i18n="gb_p1_f5">Extra 1 000 guľok +4€</li>
+            </ul>
+            <a href="rezervacia.html?aktivita=gelblaster" class="btn btn-primary btn-full" data-i18n="book_btn">Rezervovať</a>
+          </div>
+
+          <div class="price-card fade-in" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:16px;">
+            <div style="font-size:2.5rem;">🏢</div>
+            <h4 style="color:var(--white);" data-i18n="extra_time_title">Extra čas</h4>
+            <p style="font-size:0.9rem;" data-i18n="extra_time_desc">Pon–Štv: +40€/h &nbsp;|&nbsp; Pia–Ned: +50€/h &nbsp; za skupinu</p>
+            <a href="rezervacia.html?aktivita=gelblaster" class="btn btn-ghost btn-full" data-i18n="book_btn">Rezervovať</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- NERF PRICES -->
+      <div class="tab-pane" id="tab-nerf">
+        <div class="price-cards">
+          <div class="price-card price-card-featured fade-in" style="max-width:400px;margin:0 auto;">
+            <div class="price-badge" data-i18n="recommended">Odporúčané</div>
+            <div class="price-name" data-i18n="nerf_p1_name">Nerf bitka</div>
+            <div class="price-amount"><span data-i18n="nerf_p1_amount">18</span><span>€<span style="font-size:0.9rem;color:var(--text-muted);font-weight:400"> /os.</span></span></div>
+            <div class="price-duration" data-i18n="nerf_p1_duration">2 hodiny · vrátane prípravy</div>
+            <ul class="price-features">
+              <li data-i18n="nerf_p1_f1">Prémiová Nerf zbraň v cene</li>
+              <li data-i18n="nerf_p1_f2">Penové strely v cene</li>
+              <li data-i18n="nerf_p1_f3">Inštruktor</li>
+              <li data-i18n="nerf_p1_f4">Min. 4 hráči</li>
+              <li data-i18n="nerf_p1_f5">Rôzne herné scenáre</li>
+            </ul>
+            <a href="rezervacia.html?aktivita=nerf" class="btn btn-primary btn-full" data-i18n="book_btn">Rezervovať</a>
+          </div>
+
+          <div class="price-card fade-in" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:16px;">
+            <div style="font-size:2.5rem;">🏢</div>
+            <h4 style="color:var(--white);" data-i18n="extra_time_title">Extra čas</h4>
+            <p style="font-size:0.9rem;" data-i18n="extra_time_desc">Pon–Štv: +40€/h &nbsp;|&nbsp; Pia–Ned: +50€/h &nbsp; za skupinu</p>
+            <a href="rezervacia.html?aktivita=nerf" class="btn btn-ghost btn-full" data-i18n="book_btn">Rezervovať</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-note fade-in" data-i18n="pricing_note_txt">
+        Skupina 10+ hráčov pri Paintballe? <strong>Organizátor má 50% zľavu</strong> na svoj balík.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+       ============================================================ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-tag" data-i18n="faq_tag">Časté otázky</div>
+        <h2 data-i18n="faq_title">Máš otázku? My máme odpoveď.</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item fade-in">
+          <button class="faq-question">
+            <span data-i18n="faq_q1">Od koľkých rokov môžu deti hrať?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq_a1">Laser Tag, Gel Blaster a Nerf sú vhodné od 5–6 rokov (závisí od postavy a schopnosti udržať zbraň). Deti do 18 rokov potrebujú podpis zákonného zástupcu na waiverí u inštruktora.</div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question">
+            <span data-i18n="faq_q2">Aký je minimálny počet hráčov?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq_a2">Pre Laser Tag, Gel Blaster a Nerf je minimum 4 hráči, maximum 12 hráčov. Ak ste menej, vieme vás spojiť s inou skupinou — napíšte nám.</div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question">
+            <span data-i18n="faq_q3">Je aktivita bolestivá?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq_a3">Nie. Laser Tag nepoužíva žiadne projektily — len infračervené lúče. Vodné guľky Gel Blasteru sú mäkké a pri dopade praskajú bez bolesti. Nerf strely sú penové a úplne bezpečné.</div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question">
+            <span data-i18n="faq_q4">Čo si mám priniesť?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq_a4">Pevnú staršiu športovú obuv (odporúčame), pohodlné oblečenie na pohyb. Na Laser Tag nič extra — vybavenie je k dispozícii na mieste. Na Gel Blaster odporúčame náhradné tričko.</div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question">
+            <span data-i18n="faq_q5">Kde sa nachádza NEON TANK ARENA?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq_a5">Sme v Bratislave na adrese Kopčianska 6211. Parkovanie je priamo pred budovou. Presné inštrukcie dostanete po rezervácii.</div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question">
+            <span data-i18n="faq_q6">Môžem prísť s tortou na narodeninový event?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq_a6">Áno! Stôl v oddychovej zóne a chladnička na tortu sú k dispozícii zdarma — treba len nahlásiť vopred. Prosíme, prinesie si vlastný nôž, papierové taniere a príbory.</div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question">
+            <span data-i18n="faq_q7">Ako funguje platba a záloha?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq_a7">Záloha 50€ zabezpečí záväznú rezerváciu (odráta sa z finálnej ceny). Platba na mieste: hotovosť alebo karta. Storno s vrátením zálohy len pri zrušení viac ako 48 hodín vopred.</div>
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <button class="faq-question">
+            <span data-i18n="faq_q8">Je možné vystaviť faktúru na firmu?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq_a8">Áno, firemné teambuildingy fakturujeme bez problémov. Uveďte to pri rezervácii a my pripravíme podklady.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA BANNER
+       ============================================================ -->
+  <section class="section-sm cta-banner" id="kontakt">
+    <div class="container cta-inner">
+      <div>
+        <h2 data-i18n="cta_title">Pripravený na bitku?</h2>
+        <p data-i18n="cta_sub">Rezervuj termín ešte dnes — kapacita je obmedzená.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="rezervacia.html" class="btn btn-primary btn-lg" data-i18n="cta_btn_book">Rezervovať online</a>
+        <a href="tel:+421903199993" class="btn btn-outline btn-lg" data-i18n="cta_btn_call">Zavolať nám</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <img src="Warlords Nove + Laser/PNG/Warlords logo - horizontal - inverse.png"
+             alt="Warlords" class="footer-logo" />
+        <p data-i18n="footer_tagline">Čisté bojové aktivity pre celú rodinu.</p>
+        <div class="footer-arena">⚡ NEON TANK ARENA</div>
+        <div class="social-row">
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.72a4.85 4.85 0 01-1.01-.03z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer_activities">Aktivity</h4>
+        <a href="#lasertag" data-i18n="nav_lasertag">Laser Tag</a>
+        <a href="#gelblaster" data-i18n="nav_gelblaster">Gel Blaster</a>
+        <a href="#nerf" data-i18n="nav_nerf">Nerf</a>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer_events">Eventy</h4>
+        <a href="#eventy" data-i18n="footer_kids">Detské oslavy</a>
+        <a href="#eventy" data-i18n="footer_bach">Rozlúčky so slobodou</a>
+        <a href="#eventy" data-i18n="footer_team">Teambuilding</a>
+        <a href="#eventy" data-i18n="footer_school">Školské skupiny</a>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer_contact">Kontakt</h4>
+        <a href="tel:+421903199993">+421 903 199 993</a>
+        <a href="mailto:info@warlords.sk">info@warlords.sk</a>
+        <span>Kopčianska 6211, Bratislava</span>
+        <a href="rezervacia.html" data-i18n="footer_booking">Online rezervácia</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span data-i18n="footer_copy">© 2025 Warlords. Všetky práva vyhradené.</span>
+        <div style="display:flex;gap:16px;">
+          <a href="#" data-i18n="footer_privacy">Ochrana osobných údajov</a>
+          <a href="#" data-i18n="footer_terms">Podmienky používania</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY BOOKING BUTTON -->
+  <a href="rezervacia.html" class="sticky-btn" id="stickyBtn">
+    <span class="sticky-btn-dot"></span>
+    <span data-i18n="nav_book">Rezervovať</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>

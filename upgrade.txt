@@ -1,0 +1,75 @@
+Môj návrh mailu pre Nuhlíčka 
+
+Ďakjujeme za ponuku a určite by sme to chceli ešte utriasť aj nám chvíľu trvalo všetko si zadefinovať a požiadať o prípadné možnosti aby sme zvolili vhodnú cestu.
+
+V prvom rade sa nám dizajn páči a nevidíme zmysel ho meniť len aby sa menil, určite sa nebránime zmene hlavne pokiaľ sa jedná aby neboli technológie už neaktualizovateľné, prípadne aby nevzniklo nejaké bezpečnostné riziko.
+
+Určite je cieľ zvýšiť konverziu čiže aby rezervačný formulár vo forme tlačidla alebo nejakého rýchleho vždy viditeľného prekliku k dispozícií aj keď používateľ scroluje na našom webe. Taktiež by som chcel aby sa zmenil rezervačný formulár na konkrétny link, aby som ho vedel emailom, prípadne správou poslať, alebo aby sme naň mohli presmerovávať určité kampane.
+Osobne by som rád prekopal aj systém akým prijímame objednávky, aké možnosti by boli ak by sme chceli v back office vidieť kto spravil rezerváciu a následne aby sme ju vedeli potvrdiť = potvrdzujúci mail klientovi o statuse čakajúcej rezervácie kde bude link na zaplatenie a následne po uhradení ,ideál ak by po spracovaní platby automaticky preradil rezerváciu ako potvrdenú. 
+Momentálne máme nejaké preddefinované texty, ktoré však len kopírujeme manuálne a vždy je potrebné manuálne vtvoriť zálohovú platbu a po úhrade vytvoriť ostrú faktúru a zmeniť text. Toto by sme radi pre nás zefektívnili samozrejme s možnosťou editovania rezervácií (aktivita, dĺžka rezervácie). 
+Ako fakturačný systém používame online fakturácia.kross.sk a máme aj sum up platobný terminál, účet v Tatra banke len spomínam ak sa to dá rovno implementovať a zautomatizovať na základe nejakých prístupov, napr fakturácií stačí že pridelím prístup a priraďuje či je alebo nie je faktúra zaplatená.
+
+Určite by sme chceli mať možnosť navyšovať počet ihrísk a aktivít do budúcna aby tam nebol nejaký limit
+
+Momentálne Ihriská
+Raccoon city
+Outdoor
+Nová aréna pre deti (názov doplníme)
+
+Aktivity
+Paintball
+Airsoft 
+Laser tag
+Gel blaster
+Nerf
+
+Taktiež aby bolo možné pri rezervácií priradiť aktivity ku konkrétnym ihriskám s možnosťou zmeny. Nakoľko teraz chceme v Raccon city poskytovať všetky aktivity, avšak časom budú limitované len na Novú arénu.
+V rezervácií by som mal rád podľa zvolenej hry rozdielne časové úseky
+Paintball - 3 hodiny s možnosťou úpravy a informáciou ďalšia hodina +50€ / hodina na skupinu Piatok - Nedeľa. Pondelok - štvrtok +40€ / hodina na skupinu a ak vyplní 10 a viac hráčov info o 50% zľave pre neho ako organizátora.
+Airsoft - 2 hodiny s možnosťou úpravy a informáciou ďalšia hodina +50€ / hodina na skupinu Piatok - Nedeľa. Pondelok - štvrtok +40€ / hodina na skupinu
+Lasertag 30 min hry = 60 min rezervovaných na ihrisku) a informácia o možnom príplatku extra 15 min hry na mieste za 6€ na osobu
+Lasertag 60 min hry = 120 min rezetrvovaných na ihrisku a informácia o možnom príplatku extra 15 min hry na mieste za 6€ na osobu
+Gel blaster 2 hodiny s možnosťou úpravy a informáciou ďalšia hodina +50€ / hodina na skupinu Piatok - Nedeľa. Pondelok - štvrtok +40€ / hodina na skupinu
+Nerf 2 hodiny s možnosťou úpravy a informáciou ďalšia hodina +50€ / hodina na skupinu Piatok - Nedeľa. Pondelok - štvrtok +40€ / hodina na skupinu
+
+Minimálny počet hráčov - ideál editovateľné nakoľko po otvorení haly by som znížil = druhé číslo za lomítkom tým pádom info o možnom spájaní skupín
+Aktivity
+Paintball - 8
+Airsoft  - 8 / 4
+Laser tag - 6 / 4
+Gel blaster - 6 / 4
+Nerf - 6 / 4
+
+Časové okná vrámci 24hodín
+Info že rezervácia nie je platná kým neobdržia potvrdzovací email s platobným linkom - kľudne nech sa zobrazi keď klikne na odoslať
+
+
+Cenník
+Súhlasím s prerobením pre jednotlivé aktivity a dopĺňam info
+Lasertag 3 * 10min hra 11€ osoba
+Lasertag 6 * 10 min hra 18€ osoba
+
+Gel blaster 2hodiny 18€ osoba
+
+Nerf ešte nie je cenotvrorba hotová pravdepodobne 18€ osoba
+
+
+
+Určite potrebujeme prerobiť sekcie o špeciálnych eventoch
+Narodeninové oslavy
+Rozlúčky so slobodou
+Firemný teambuilding
+Vianočné a iné večierky
+Prenájom priestorov
+
+FAQ určite tiež treba prekopať.
+
+Páči sa mi video ktoré máme v pozadí je to možné spraviť aj pri eventoch a aktivitách takéto nejaké špecializované video ku každému typu eventu / aktivite ktoré ide na pozadí?
+
+Antispam by sme radi riešili aj pri vypĺňaní mena rezervačného formulára Meno medzera Priezvisko ak tam nie je medzera aby sa nedalo poslať prípadne ak má telefónne číslo primálo alebo priveľa znakov? 
+Je to tým pádom možné aj trochu stlačiť pod tých 336?
+
+Google recenzie si myslím že za 500€ neprinesú takú pridanú hodnotu úprimne tam by som vedel žiť s tám že tam sú len nejaké manuálne nahodené, alebo to vnímam zle?
+
+Vieme že tieto zmeny budú niečo stáť a samozrejme si vážime dlhodobú spoluprácu a ochotu nám zľaviť, určite si nebudeme môcť dovoliť všetko avšak hlavné ciele sú. Vyššia konverzia na rezervácie a uľahčenie správy rezervácií.
+Určite by sme boli radi vzhľadom na ešte prebiehajúce investície keby aj ceny boli čo najviac friendy prípadne aby sme si to vedeli rozhodiť na viac splátok prosím, bolo by to pre teba možné?

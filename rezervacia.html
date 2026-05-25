@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rezervácia | Warlords – Neon Tank Arena Bratislava</title>
+  <meta name="description" content="Rezervujte Laser Tag, Gel Blaster alebo Nerf v NEON TANK ARENA Bratislava. Online rezervácia do 2 minút." />
+  <link rel="icon" href="img/PNG/warlords-logo-vertical.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .time-option { position: relative; }
+    .time-option input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .time-option-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 8px;
+      background: var(--bg-surface);
+      border: 2px solid var(--bg-border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--white);
+      transition: var(--transition);
+    }
+    .time-option input:checked + .time-option-label {
+      border-color: var(--gold);
+      background: var(--gold-glow);
+      color: var(--gold);
+    }
+    .time-option-label:hover { border-color: rgba(255,255,255,0.2); }
+    .time-option.unavailable .time-option-label {
+      opacity: 0.3;
+      cursor: not-allowed;
+      text-decoration: line-through;
+    }
+    .event-type-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .event-type-option { position: relative; }
+    .event-type-option input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .event-type-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--bg-surface);
+      border: 2px solid var(--bg-border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .event-type-option input:checked + .event-type-label {
+      border-color: var(--gold);
+      background: var(--gold-glow);
+    }
+    .event-type-emoji { font-size: 1.3rem; }
+    .event-type-name {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.03em;
+    }
+    .deposit-box {
+      background: linear-gradient(135deg, rgba(255,184,0,0.1) 0%, var(--bg-surface) 100%);
+      border: 1px solid rgba(255,184,0,0.25);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-top: 16px;
+    }
+    .deposit-box h4 { color: var(--gold); margin-bottom: 8px; font-size: 1rem; }
+    .deposit-box p { font-size: 0.85rem; }
+    .form-section-divider {
+      border: none;
+      border-top: 1px solid var(--bg-border);
+      margin: 24px 0;
+    }
+    .player-counter {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      width: fit-content;
+    }
+    .counter-btn {
+      width: 44px; height: 48px;
+      background: var(--bg-surface);
+      border: none;
+      color: var(--white);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background var(--transition);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .counter-btn:hover { background: var(--bg-card); }
+    .counter-val {
+      width: 56px;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      background: var(--bg-primary);
+      height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      border-left: 1px solid var(--bg-border);
+      border-right: 1px solid var(--bg-border);
+    }
+    .min-warn {
+      display: none;
+      font-size: 0.8rem;
+      color: #FF6B6B;
+      margin-top: 6px;
+    }
+    .min-warn.visible { display: block; }
+    .organizer-discount {
+      display: none;
+      font-size: 0.85rem;
+      color: var(--gold);
+      background: var(--gold-glow);
+      border: 1px solid rgba(255,184,0,0.2);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      margin-top: 8px;
+    }
+    .organizer-discount.visible { display: block; }
+  </style>
+</head>
+<body class="booking-page">
+
+  <!-- ============================================================
+       NAVBAR (minimal)
+       ============================================================ -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="img/PNG/warlords-logo-horizontal-inverse.png"
+             alt="Warlords" class="nav-logo-img" />
+      </a>
+
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="sk">SK</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+        <a href="tel:+421903199993" class="btn btn-outline" style="padding:9px 18px;font-size:0.85rem;">
+          📞 +421 903 199 993
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       BOOKING HERO
+       ============================================================ -->
+  <div class="booking-hero">
+    <div class="container">
+      <div class="section-tag" data-i18n="nav_book">Rezervácia</div>
+      <h1 data-i18n="hero_btn_book">Rezervovať termín</h1>
+      <p data-i18n="hero_sub_booking">Vyplň formulár — potvrdíme do 24 hodín a zašleme platobné inštrukcie.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BOOKING CONTENT
+       ============================================================ -->
+  <div class="container booking-grid">
+
+    <!-- ---- FORM ---- -->
+    <div>
+      <div class="booking-form-wrap">
+
+        <!-- Progress -->
+        <div class="form-progress">
+          <div class="progress-step current" id="prog1"></div>
+          <div class="progress-step" id="prog2"></div>
+          <div class="progress-step" id="prog3"></div>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="booking-success" id="bookingSuccess">
+          <div class="success-icon">✓</div>
+          <h2 data-i18n="success_title">Rezervácia odoslaná!</h2>
+          <p data-i18n="success_desc">Ďakujeme! Do 24 hodín dostanete potvrdzovací email s platobnými inštrukciami. Rezervácia je platná až po uhradení zálohy 50€.</p>
+          <a href="index.html" class="btn btn-primary btn-lg" data-i18n="success_back">Späť na hlavnú stránku</a>
+        </div>
+
+        <!-- ERROR STATE -->
+        <div class="booking-error" id="bookingError" style="display:none;">
+          <div class="error-icon">⚠️</div>
+          <h2>Formulár sa neodoslal</h2>
+          <p>Nastala technická chyba. Rezerváciu môžeš urobiť priamo cez WhatsApp alebo telefón — odpovieme do pár minút.</p>
+          <div class="error-actions">
+            <a href="https://wa.me/421903199993" class="btn btn-primary btn-lg" target="_blank">
+              💬 WhatsApp rezervácia
+            </a>
+            <a href="tel:+421903199993" class="btn btn-outline btn-lg">
+              📞 +421 903 199 993
+            </a>
+          </div>
+          <button class="error-retry" id="errorRetryBtn">← Skúsiť znova</button>
+        </div>
+
+        <!-- ---- STEP 1: Aktivita + Event ---- -->
+        <div class="form-step active" id="step1">
+          <div class="form-step-header">
+            <div class="step-num">1</div>
+            <div class="step-label" data-i18n="step1_label">Vyber aktivitu</div>
+          </div>
+
+          <!-- Activity selector -->
+          <div class="form-group">
+            <label data-i18n="label_activity">Aktivita *</label>
+            <div class="activity-selector" id="activitySelector">
+              <div class="activity-option">
+                <input type="radio" name="aktivita" id="a_lt" value="lasertag" />
+                <label class="activity-option-label" for="a_lt">
+                  <span class="activity-option-icon">⚡</span>
+                  <span class="activity-option-name">Laser Tag</span>
+                  <span class="activity-option-price">od 11€/os.</span>
+                </label>
+              </div>
+              <div class="activity-option">
+                <input type="radio" name="aktivita" id="a_gb" value="gelblaster" />
+                <label class="activity-option-label" for="a_gb">
+                  <span class="activity-option-icon">💧</span>
+                  <span class="activity-option-name">Gel Blaster</span>
+                  <span class="activity-option-price">18€/os.</span>
+                </label>
+              </div>
+              <div class="activity-option">
+                <input type="radio" name="aktivita" id="a_nerf" value="nerf" />
+                <label class="activity-option-label" for="a_nerf">
+                  <span class="activity-option-icon">🎯</span>
+                  <span class="activity-option-name">Nerf</span>
+                  <span class="activity-option-price">18€/os.</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package selector — shown based on activity -->
+          <div class="form-group" id="packageGroup" style="display:none;">
+            <label data-i18n="label_package">Balík *</label>
+            <div class="package-list" id="packageList">
+              <!-- populated by JS -->
+            </div>
+          </div>
+
+          <!-- Event type -->
+          <div class="form-group">
+            <label data-i18n="label_event_type">Typ eventu</label>
+            <div class="event-type-grid">
+              <div class="event-type-option">
+                <input type="radio" name="event_type" id="et_narodeninova" value="Narodeninová oslava" />
+                <label class="event-type-label" for="et_narodeninova">
+                  <span class="event-type-emoji">🎂</span>
+                  <span class="event-type-name" data-i18n="et_birthday">Narodeninová oslava</span>
+                </label>
+              </div>
+              <div class="event-type-option">
+                <input type="radio" name="event_type" id="et_rozlucka" value="Rozlúčka so slobodou" />
+                <label class="event-type-label" for="et_rozlucka">
+                  <span class="event-type-emoji">💍</span>
+                  <span class="event-type-name" data-i18n="et_bach">Rozlúčka so slobodou</span>
+                </label>
+              </div>
+              <div class="event-type-option">
+                <input type="radio" name="event_type" id="et_team" value="Firemný teambuilding" />
+                <label class="event-type-label" for="et_team">
+                  <span class="event-type-emoji">🏢</span>
+                  <span class="event-type-name" data-i18n="et_team">Firemný teambuilding</span>
+                </label>
+              </div>
+              <div class="event-type-option">
+                <input type="radio" name="event_type" id="et_other" value="Iné" checked />
+                <label class="event-type-label" for="et_other">
+                  <span class="event-type-emoji">🎮</span>
+                  <span class="event-type-name" data-i18n="et_other">Iba zahrať si</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-nav">
+            <button type="button" class="btn btn-primary btn-full" onclick="nextStep(1)" data-i18n="btn_next">Ďalej →</button>
+          </div>
+        </div>
+
+        <!-- ---- STEP 2: Dátum + Čas + Hráči ---- -->
+        <div class="form-step" id="step2">
+          <div class="form-step-header">
+            <div class="step-num">2</div>
+            <div class="step-label" data-i18n="step2_label">Dátum, čas a počet hráčov</div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="label_date">Preferovaný dátum *</label>
+              <input type="date" id="datum" name="datum" required />
+            </div>
+            <div class="form-group">
+              <label data-i18n="label_altdate">Náhradný dátum</label>
+              <input type="date" id="datum2" name="datum2" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="label_time">Preferovaný čas</label>
+            <div class="time-grid">
+              <div class="time-option">
+                <input type="radio" name="cas" id="t10" value="10:00" />
+                <label class="time-option-label" for="t10">10:00</label>
+              </div>
+              <div class="time-option">
+                <input type="radio" name="cas" id="t12" value="12:00" />
+                <label class="time-option-label" for="t12">12:00</label>
+              </div>
+              <div class="time-option">
+                <input type="radio" name="cas" id="t14" value="14:00" />
+                <label class="time-option-label" for="t14">14:00</label>
+              </div>
+              <div class="time-option">
+                <input type="radio" name="cas" id="t16" value="16:00" />
+                <label class="time-option-label" for="t16">16:00</label>
+              </div>
+              <div class="time-option">
+                <input type="radio" name="cas" id="t18" value="18:00" />
+                <label class="time-option-label" for="t18">18:00</label>
+              </div>
+              <div class="time-option">
+                <input type="radio" name="cas" id="t20" value="20:00" />
+                <label class="time-option-label" for="t20">20:00</label>
+              </div>
+              <div class="time-option">
+                <input type="radio" name="cas" id="tflexible" value="Flexibilný" checked />
+                <label class="time-option-label" for="tflexible" data-i18n="time_flexible">Flexibilný</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="label_players">Počet hráčov *</label>
+            <div class="player-counter">
+              <button type="button" class="counter-btn" id="playerMinus">−</button>
+              <div class="counter-val" id="playerVal">6</div>
+              <button type="button" class="counter-btn" id="playerPlus">+</button>
+            </div>
+            <input type="hidden" id="pocetHracov" name="pocet_hracov" value="6" />
+            <div class="min-warn" id="minWarn" data-i18n="min_warn">Minimum sú 4 hráči. Ak ste menej, vieme vás spojiť s inou skupinou.</div>
+            <div class="organizer-discount" id="orgDiscount" data-i18n="org_discount">🎉 Pri 10+ hráčoch má organizátor 50% zľavu na paintball balík!</div>
+          </div>
+
+          <div class="form-nav">
+            <button type="button" class="btn-back" onclick="prevStep(2)">← <span data-i18n="btn_back">Späť</span></button>
+            <button type="button" class="btn btn-primary" style="flex:1;" onclick="nextStep(2)" data-i18n="btn_next">Ďalej →</button>
+          </div>
+        </div>
+
+        <!-- ---- STEP 3: Kontakt + Odoslať ---- -->
+        <div class="form-step" id="step3">
+          <div class="form-step-header">
+            <div class="step-num">3</div>
+            <div class="step-label" data-i18n="step3_label">Kontaktné údaje</div>
+          </div>
+
+          <form id="bookingForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="meno" data-i18n="label_name">Meno *</label>
+                <input type="text" id="meno" name="meno"
+                       pattern="^[^\s].* .*[^\s]$"
+                       placeholder="Ján Novák" required />
+                <div class="form-hint" data-i18n="hint_name">Meno a priezvisko (s medzerou)</div>
+              </div>
+              <div class="form-group">
+                <label for="email" data-i18n="label_email">Email *</label>
+                <input type="email" id="email" name="email" placeholder="jan@email.sk" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefon" data-i18n="label_phone">Telefón *</label>
+                <input type="tel" id="telefon" name="telefon"
+                       pattern="^[\+]?[\d\s\-]{9,15}$"
+                       placeholder="+421 900 000 000" required />
+                <div class="form-hint" data-i18n="hint_phone">Minimálne 9 číslic</div>
+              </div>
+              <div class="form-group" id="icoGroup" style="display:none;">
+                <label for="ico" data-i18n="label_ico">IČO firmy</label>
+                <input type="text" id="ico" name="ico" placeholder="12345678" />
+                <div class="form-hint" data-i18n="hint_ico">Pre fakturáciu na firmu</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sprava" data-i18n="label_message">Správa / špeciálne požiadavky</label>
+              <textarea id="sprava" name="sprava" rows="3" placeholder="Napr. vek detí, narodeninová torta, catering, kostým pre nevestu..."></textarea>
+            </div>
+
+            <!-- Hidden fields populated by JS -->
+            <input type="hidden" id="h_aktivita" name="aktivita" />
+            <input type="hidden" id="h_balik" name="balik" />
+            <input type="hidden" id="h_event_type" name="event_type" />
+            <input type="hidden" id="h_datum" name="datum_x" />
+            <input type="hidden" id="h_datum2" name="datum2_x" />
+            <input type="hidden" id="h_cas" name="cas" />
+            <input type="hidden" id="h_pocet" name="pocet" />
+
+            <div class="deposit-box">
+              <h4 data-i18n="deposit_title">Záloha 50€</h4>
+              <p data-i18n="deposit_desc">Rezervácia je platná až po uhradení zálohy 50€. Platobné inštrukcie dostanete emailom do 24 hodín. Záloha sa odpočíta z finálnej ceny.</p>
+            </div>
+
+            <div class="confirmation-banner" style="margin-top:16px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span data-i18n="confirm_info">Po odoslaní formulára nie je rezervácia potvrdená — potvrdenie dostanete emailom s linkom na zaplatenie zálohy.</span>
+            </div>
+
+            <div class="form-nav" style="margin-top:20px;">
+              <button type="button" class="btn-back" onclick="prevStep(3)">← <span data-i18n="btn_back">Späť</span></button>
+              <button type="submit" class="btn btn-primary" style="flex:1;" id="submitBtn">
+                <span data-i18n="btn_submit">Odoslať rezerváciu</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ---- SIDEBAR ---- -->
+    <div class="booking-sidebar">
+      <div class="sidebar-card" id="summarySidebar">
+        <h3 data-i18n="sidebar_summary">Súhrn rezervácie</h3>
+        <div id="summaryContent">
+          <div class="summary-row">
+            <span data-i18n="sum_activity">Aktivita</span>
+            <strong id="sum_act">—</strong>
+          </div>
+          <div class="summary-row">
+            <span data-i18n="sum_package">Balík</span>
+            <strong id="sum_pkg">—</strong>
+          </div>
+          <div class="summary-row">
+            <span data-i18n="sum_date">Dátum</span>
+            <strong id="sum_date">—</strong>
+          </div>
+          <div class="summary-row">
+            <span data-i18n="sum_time">Čas</span>
+            <strong id="sum_time">—</strong>
+          </div>
+          <div class="summary-row">
+            <span data-i18n="sum_players">Hráči</span>
+            <strong id="sum_players">—</strong>
+          </div>
+          <div class="summary-row">
+            <span data-i18n="sum_event">Typ eventu</span>
+            <strong id="sum_event">—</strong>
+          </div>
+        </div>
+        <div class="summary-total">
+          <span class="label" data-i18n="sum_deposit">Záloha</span>
+          <span class="amount">50€</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3 style="font-size:1rem;margin-bottom:16px;" data-i18n="sidebar_contact">Kontakt</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:0.9rem;color:var(--text-secondary);">
+          <div>📞 <a href="tel:+421903199993" style="color:var(--white);">+421 903 199 993</a></div>
+          <div>✉️ <a href="mailto:info@warlords.sk" style="color:var(--white);">info@warlords.sk</a></div>
+          <div>📍 <span>Kopčianska 6211, Bratislava</span></div>
+        </div>
+        <hr class="form-section-divider" />
+        <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;" data-i18n="sidebar_note">
+          Otvorené každý deň.<br/>
+          Odpovieme do 24 hodín.<br/>
+          Platba zálohy zabezpečí termín.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER minimal -->
+  <div style="background:#050608;border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;text-align:center;font-size:0.8rem;color:var(--text-muted);">
+    <a href="index.html" style="color:var(--text-muted);">← <span data-i18n="footer_copy">© 2025 Warlords</span></a>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+  /* ---- BOOKING PAGE LOGIC ---- */
+
+  const PACKAGES = {
+    lasertag: [
+      { id: 'mini',  label: 'Mini bitka',   detail: '30 min (3×10min) · 1h slot', price: 11 },
+      { id: 'big',   label: 'Veľká bitka',  detail: '60 min (6×10min) · 2h slot', price: 18 },
+    ],
+    gelblaster: [
+      { id: 'std',   label: 'Gel Blaster',  detail: '2 hodiny + príprava', price: 18 },
+    ],
+    nerf: [
+      { id: 'std',   label: 'Nerf bitka',   detail: '2 hodiny + príprava', price: 18 },
+    ],
+  };
+
+  let currentStep = 1;
+  let playerCount = 6;
+  const MIN_PLAYERS = 4;
+  const MAX_PLAYERS = 12;
+
+  /* Pre-select from URL param */
+  function preselectFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const a = params.get('aktivita');
+    const b = params.get('balik');
+    if (a) {
+      const radio = document.querySelector(`input[name="aktivita"][value="${a}"]`);
+      if (radio) { radio.checked = true; onActivityChange(a); }
+    }
+    if (b) {
+      const pkgRadio = document.querySelector(`input[name="balik"][value="${b}"]`);
+      if (pkgRadio) pkgRadio.checked = true;
+    }
+  }
+
+  function onActivityChange(val) {
+    const pgGroup = document.getElementById('packageGroup');
+    const pgList  = document.getElementById('packageList');
+    pgList.innerHTML = '';
+    if (PACKAGES[val]) {
+      PACKAGES[val].forEach((pkg, i) => {
+        const isFirst = i === 0;
+        pgList.innerHTML += `
+          <div class="package-option">
+            <input type="radio" name="balik" id="pkg_${pkg.id}" value="${pkg.id}" ${isFirst ? 'checked' : ''} />
+            <label class="package-option-label" for="pkg_${pkg.id}">
+              <div>
+                <div class="package-name">${pkg.label}</div>
+                <div class="package-detail">${pkg.detail}</div>
+              </div>
+              <div class="package-price">
+                ${pkg.price}€
+                <small>/os.</small>
+              </div>
+            </label>
+          </div>`;
+      });
+      pgGroup.style.display = PACKAGES[val].length > 1 ? 'flex' : 'none';
+    }
+    updateSidebar();
+  }
+
+  /* Player counter */
+  document.getElementById('playerMinus')?.addEventListener('click', () => {
+    if (playerCount > 1) { playerCount--; updatePlayerUI(); }
+  });
+  document.getElementById('playerPlus')?.addEventListener('click', () => {
+    if (playerCount < MAX_PLAYERS) { playerCount++; updatePlayerUI(); }
+  });
+
+  function updatePlayerUI() {
+    document.getElementById('playerVal').textContent = playerCount;
+    document.getElementById('pocetHracov').value = playerCount;
+    document.getElementById('minWarn').classList.toggle('visible', playerCount < MIN_PLAYERS);
+    document.getElementById('orgDiscount').classList.toggle('visible', playerCount >= 10);
+    updateSidebar();
+  }
+
+  /* Activity change listener */
+  document.querySelectorAll('input[name="aktivita"]').forEach(r => {
+    r.addEventListener('change', () => onActivityChange(r.value));
+  });
+
+  /* Sidebar update */
+  function updateSidebar() {
+    const act   = document.querySelector('input[name="aktivita"]:checked');
+    const pkg   = document.querySelector('input[name="balik"]:checked');
+    const datum = document.getElementById('datum')?.value;
+    const cas   = document.querySelector('input[name="cas"]:checked');
+    const event = document.querySelector('input[name="event_type"]:checked');
+
+    const actLabels = { lasertag: 'Laser Tag', gelblaster: 'Gel Blaster', nerf: 'Nerf' };
+    document.getElementById('sum_act').textContent   = act  ? actLabels[act.value] || act.value : '—';
+    document.getElementById('sum_pkg').textContent   = pkg  ? (document.querySelector(`label[for="pkg_${pkg.value}"] .package-name`)?.textContent || '—') : '—';
+    document.getElementById('sum_date').textContent  = datum || '—';
+    document.getElementById('sum_time').textContent  = cas  ? cas.value : '—';
+    document.getElementById('sum_players').textContent = playerCount;
+    document.getElementById('sum_event').textContent = event ? event.value : '—';
+  }
+
+  document.querySelectorAll('input[name="event_type"]').forEach(r => r.addEventListener('change', () => {
+    const isTeam = r.value === 'Firemný teambuilding';
+    document.getElementById('icoGroup').style.display = isTeam ? 'flex' : 'none';
+    updateSidebar();
+  }));
+  document.querySelectorAll('input[name="cas"]').forEach(r => r.addEventListener('change', updateSidebar));
+  document.getElementById('datum')?.addEventListener('change', updateSidebar);
+
+  /* Step navigation */
+  function nextStep(from) {
+    if (from === 1) {
+      const act = document.querySelector('input[name="aktivita"]:checked');
+      if (!act) { alert(document.documentElement.lang === 'sk' ? 'Prosím vyber aktivitu.' : 'Please select an activity.'); return; }
+    }
+    if (from === 2) {
+      const datum = document.getElementById('datum').value;
+      if (!datum) { alert(document.documentElement.lang === 'sk' ? 'Prosím vyber dátum.' : 'Please select a date.'); return; }
+    }
+    setStep(from + 1);
+  }
+
+  function prevStep(from) { setStep(from - 1); }
+
+  function setStep(n) {
+    currentStep = n;
+    document.querySelectorAll('.form-step').forEach((s, i) => {
+      s.classList.toggle('active', i + 1 === n);
+    });
+    document.querySelectorAll('.progress-step').forEach((p, i) => {
+      p.classList.remove('done', 'current');
+      if (i + 1 < n) p.classList.add('done');
+      if (i + 1 === n) p.classList.add('current');
+    });
+    updateSidebar();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* Form submit */
+  document.getElementById('bookingForm')?.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    /* Populate hidden fields */
+    const act  = document.querySelector('input[name="aktivita"]:checked');
+    const pkg  = document.querySelector('input[name="balik"]:checked');
+    const ev   = document.querySelector('input[name="event_type"]:checked');
+    const cas  = document.querySelector('input[name="cas"]:checked');
+
+    document.getElementById('h_aktivita').value  = act  ? act.value  : '';
+    document.getElementById('h_balik').value     = pkg  ? pkg.value  : '';
+    document.getElementById('h_event_type').value= ev   ? ev.value   : '';
+    document.getElementById('h_datum').value     = document.getElementById('datum').value;
+    document.getElementById('h_datum2').value    = document.getElementById('datum2').value;
+    document.getElementById('h_cas').value       = cas  ? cas.value  : '';
+    document.getElementById('h_pocet').value     = playerCount;
+
+    /* Validate name contains space */
+    const meno = document.getElementById('meno').value.trim();
+    if (!meno.includes(' ')) {
+      document.getElementById('meno').focus();
+      return;
+    }
+    /* Validate phone length */
+    const tel = document.getElementById('telefon').value.replace(/\s/g,'');
+    if (tel.replace(/[+\-]/g,'').length < 9) {
+      document.getElementById('telefon').focus();
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span>Odosielam...</span>';
+
+    try {
+      const formData = new FormData(this);
+      const resp = await fetch('send.php', { method: 'POST', body: formData });
+      const json = await resp.json();
+      if (json.ok) {
+        document.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
+        document.getElementById('bookingSuccess').classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error(json.error || 'Error');
+      }
+    } catch(err) {
+      btn.disabled = false;
+      btn.innerHTML = '<span data-i18n="btn_submit">Odoslať rezerváciu</span>';
+      // Hide all steps, show error screen
+      document.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
+      document.querySelector('.form-progress').style.display = 'none';
+      document.getElementById('bookingError').style.display = 'flex';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  /* Set min date to today */
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('datum').min = today;
+  document.getElementById('datum2').min = today;
+
+  /* Init */
+  // Retry button — reset error state and show form again
+  document.getElementById('errorRetryBtn').addEventListener('click', () => {
+    document.getElementById('bookingError').style.display = 'none';
+    document.querySelector('.form-progress').style.display = '';
+    // Show only the last active step (step3)
+    document.querySelectorAll('.form-step').forEach(s => s.style.display = '');
+    goToStep(3);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    preselectFromURL();
+    updatePlayerUI();
+
+    // Add extra i18n keys for booking page
+    if (window.T) {
+      window.T.sk = { ...window.T.sk,
+        hero_sub_booking: 'Vyplň formulár — potvrdíme do 24 hodín a zašleme platobné inštrukcie.',
+        step1_label: 'Vyber aktivitu',
+        step2_label: 'Dátum, čas a počet hráčov',
+        step3_label: 'Kontaktné údaje',
+        label_activity: 'Aktivita *',
+        label_package: 'Balík *',
+        label_event_type: 'Typ eventu',
+        label_date: 'Preferovaný dátum *',
+        label_altdate: 'Náhradný dátum',
+        label_time: 'Preferovaný čas',
+        label_players: 'Počet hráčov *',
+        label_name: 'Meno a priezvisko *',
+        label_email: 'Email *',
+        label_phone: 'Telefón *',
+        label_ico: 'IČO firmy',
+        label_message: 'Správa / špeciálne požiadavky',
+        hint_name: 'Meno a priezvisko (s medzerou)',
+        hint_phone: 'Minimálne 9 číslic',
+        hint_ico: 'Pre fakturáciu na firmu',
+        et_birthday: 'Narodeninová oslava',
+        et_bach: 'Rozlúčka so slobodou',
+        et_team: 'Firemný teambuilding',
+        et_other: 'Iba zahrať si',
+        time_flexible: 'Flexibilný',
+        btn_next: 'Ďalej →',
+        btn_back: 'Späť',
+        btn_submit: 'Odoslať rezerváciu',
+        deposit_title: 'Záloha 50€',
+        deposit_desc: 'Rezervácia je platná až po uhradení zálohy 50€. Platobné inštrukcie dostanete emailom do 24 hodín. Záloha sa odpočíta z finálnej ceny.',
+        confirm_info: 'Po odoslaní formulára nie je rezervácia potvrdená — potvrdenie dostanete emailom s linkom na zaplatenie zálohy.',
+        sidebar_summary: 'Súhrn rezervácie',
+        sidebar_contact: 'Kontakt',
+        sidebar_note: 'Otvorené každý deň.\nOdpovieme do 24 hodín.\nPlatba zálohy zabezpečí termín.',
+        sum_activity: 'Aktivita',
+        sum_package: 'Balík',
+        sum_date: 'Dátum',
+        sum_time: 'Čas',
+        sum_players: 'Hráči',
+        sum_event: 'Typ eventu',
+        sum_deposit: 'Záloha',
+        min_warn: 'Minimum sú 4 hráči. Ak ste menej, vieme vás spojiť s inou skupinou.',
+        org_discount: '🎉 Pri 10+ hráčoch má organizátor 50% zľavu na paintball balík!',
+        success_title: 'Rezervácia odoslaná!',
+        success_desc: 'Ďakujeme! Do 24 hodín dostanete potvrdzovací email s platobnými inštrukciami. Rezervácia je platná až po uhradení zálohy 50€.',
+        success_back: 'Späť na hlavnú stránku',
+      };
+    }
+  });
+  </script>
+</body>
+</html>

@@ -653,11 +653,21 @@
     </div>
 
     <div class="footer-bottom">
-      <div class="container footer-bottom-inner">
-        <span data-i18n="footer_copy">© 2025 Warlords. Všetky práva vyhradené.</span>
-        <div style="display:flex;gap:16px;">
-          <a href="#" data-i18n="footer_privacy">Ochrana osobných údajov</a>
-          <a href="#" data-i18n="footer_terms">Podmienky používania</a>
+      <div class="container footer-bottom-inner" style="flex-direction:column;gap:14px;align-items:flex-start;">
+        <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.6;">
+          Prevádzkovateľ: <strong style="color:var(--text-secondary);">TRESAERIS GROUP s.r.o.</strong>,
+          Hronská 5148/6, 821 07 Bratislava — Podunajské Biskupice ·
+          IČO: 50 925 989 · IČ DPH: SK2120531996 ·
+          zápis v OR Mestský súd Bratislava III, oddiel Sro, vložka č. 120245/B
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;gap:16px;flex-wrap:wrap;">
+          <span data-i18n="footer_copy">© 2025 Warlords. Všetky práva vyhradené.</span>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;">
+            <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a>
+            <a href="cookies.html">Cookies</a>
+            <a href="obchodne-podmienky.html">Obchodné podmienky</a>
+            <a href="#" id="cookiePrefsLink">Nastavenia cookies</a>
+          </div>
         </div>
       </div>
     </div>
@@ -669,6 +679,81 @@
     <span data-i18n="nav_book">Rezervovať</span>
   </a>
 
+  <!-- ============================================================
+       COOKIE CONSENT BANNER (GDPR / ePrivacy compliant)
+       ============================================================ -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-labelledby="cookieTitle" aria-describedby="cookieDesc">
+    <div class="cookie-banner-inner">
+      <div class="cookie-text">
+        <h3 id="cookieTitle">🍪 Používame cookies</h3>
+        <p id="cookieDesc">
+          Na našej stránke používame cookies pre fungovanie webu, analýzu návštevnosti a personalizáciu obsahu.
+          Kliknutím na „Prijať všetky" súhlasíte s ich používaním. Môžete tiež použiť „Iba nevyhnutné" alebo nastaviť preferencie individuálne.
+          Viac info v <a href="cookies.html">Zásadách používania cookies</a>.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button type="button" class="btn btn-outline btn-sm" id="cookieReject">Iba nevyhnutné</button>
+        <button type="button" class="btn btn-outline btn-sm" id="cookieCustomize">Nastaviť</button>
+        <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Prijať všetky</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COOKIE PREFERENCES MODAL -->
+  <div class="cookie-modal" id="cookieModal" role="dialog" aria-labelledby="cookieModalTitle">
+    <div class="cookie-modal-card">
+      <div class="cookie-modal-header">
+        <h2 id="cookieModalTitle">Nastavenia cookies</h2>
+        <button type="button" class="cookie-modal-close" id="cookieModalClose" aria-label="Zavrieť">✕</button>
+      </div>
+      <div class="cookie-modal-body">
+        <p>Vyberte si, ktoré kategórie cookies chcete povoliť. Nevyhnutné cookies sú potrebné pre základné fungovanie stránky a nedajú sa vypnúť.</p>
+
+        <div class="cookie-category">
+          <div class="cookie-category-head">
+            <div>
+              <strong>Nevyhnutné</strong>
+              <span class="cookie-required">Vždy aktívne</span>
+            </div>
+            <label class="cookie-toggle disabled">
+              <input type="checkbox" checked disabled />
+              <span class="cookie-slider"></span>
+            </label>
+          </div>
+          <p>Potrebné pre fungovanie stránky (jazyk, súhlas s cookies, formulárová relácia). Bez nich web nemôže fungovať.</p>
+        </div>
+
+        <div class="cookie-category">
+          <div class="cookie-category-head">
+            <div><strong>Analytické</strong></div>
+            <label class="cookie-toggle">
+              <input type="checkbox" id="catAnalytics" />
+              <span class="cookie-slider"></span>
+            </label>
+          </div>
+          <p>Anonymné štatistiky o návštevnosti (Google Analytics). Pomáhajú nám zlepšovať stránku.</p>
+        </div>
+
+        <div class="cookie-category">
+          <div class="cookie-category-head">
+            <div><strong>Marketingové</strong></div>
+            <label class="cookie-toggle">
+              <input type="checkbox" id="catMarketing" />
+              <span class="cookie-slider"></span>
+            </label>
+          </div>
+          <p>Cookies pre reklamu a remarketing (Meta Pixel, Google Ads). Umožňujú zobrazovať relevantnú reklamu.</p>
+        </div>
+      </div>
+      <div class="cookie-modal-footer">
+        <button type="button" class="btn btn-outline" id="cookieModalReject">Iba nevyhnutné</button>
+        <button type="button" class="btn btn-primary" id="cookieModalSave">Uložiť výber</button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
+  <script src="cookies.js"></script>
 </body>
 </html>

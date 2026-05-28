@@ -385,11 +385,11 @@
           <form id="bookingForm" novalidate>
             <div class="form-row">
               <div class="form-group">
-                <label for="meno" data-i18n="label_name">Meno *</label>
+                <label for="meno" data-i18n="label_name">Meno a priezvisko *</label>
                 <input type="text" id="meno" name="meno"
-                       pattern="^[^\s].* .*[^\s]$"
-                       placeholder="Ján Novák" required />
-                <div class="form-hint" data-i18n="hint_name">Meno a priezvisko (s medzerou)</div>
+                       placeholder="Ján Novák" required
+                       autocomplete="name" />
+                <div class="form-hint" id="menoHint" data-i18n="hint_name">Zadaj meno aj priezvisko</div>
               </div>
               <div class="form-group">
                 <label for="email" data-i18n="label_email">Email *</label>
@@ -670,13 +670,18 @@
 
     /* Validate: name must contain space */
     const meno = document.getElementById('meno').value.trim();
+    const menoHint = document.getElementById('menoHint');
     if (!meno.includes(' ')) {
-      document.getElementById('meno').setCustomValidity('Zadaj meno aj priezvisko');
-      document.getElementById('meno').reportValidity();
+      document.getElementById('meno').classList.add('input-error');
+      menoHint.textContent = '⚠ Zadaj meno aj priezvisko (napr. Ján Novák)';
+      menoHint.style.color = 'var(--orange)';
+      menoHint.style.fontWeight = '600';
       document.getElementById('meno').focus();
       return;
     }
-    document.getElementById('meno').setCustomValidity('');
+    document.getElementById('meno').classList.remove('input-error');
+    menoHint.textContent = 'Zadaj meno aj priezvisko';
+    menoHint.style.color = '';
 
     /* Validate: phone min 9 digits */
     const tel = document.getElementById('telefon').value.replace(/\s/g,'');
@@ -726,7 +731,7 @@
         }
       } catch (phpErr) {
         /* FormSubmit.co fallback — works on any static host */
-        const fsResp = await fetch('https://formsubmit.co/ajax/info@warlords.sk', {
+        const fsResp = await fetch('https://formsubmit.co/ajax/info@propaintball.sk', {
           method:  'POST',
           headers: { 'Accept': 'application/json' },
           body:    payload,
@@ -824,5 +829,60 @@
     }
   });
   </script>
+
+  <!-- COOKIE BANNER + MODAL -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-labelledby="cookieTitle">
+    <div class="cookie-banner-inner">
+      <div class="cookie-text">
+        <h3 id="cookieTitle">🍪 Používame cookies</h3>
+        <p>Na našej stránke používame cookies pre fungovanie webu, analýzu návštevnosti a personalizáciu obsahu.
+           Viac info v <a href="cookies.html">Zásadách používania cookies</a>.</p>
+      </div>
+      <div class="cookie-actions">
+        <button type="button" class="btn btn-outline btn-sm" id="cookieReject">Iba nevyhnutné</button>
+        <button type="button" class="btn btn-outline btn-sm" id="cookieCustomize">Nastaviť</button>
+        <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Prijať všetky</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cookie-modal" id="cookieModal" role="dialog">
+    <div class="cookie-modal-card">
+      <div class="cookie-modal-header">
+        <h2>Nastavenia cookies</h2>
+        <button type="button" class="cookie-modal-close" id="cookieModalClose" aria-label="Zavrieť">✕</button>
+      </div>
+      <div class="cookie-modal-body">
+        <p>Vyberte si, ktoré kategórie cookies chcete povoliť.</p>
+        <div class="cookie-category">
+          <div class="cookie-category-head">
+            <div><strong>Nevyhnutné</strong><span class="cookie-required">Vždy aktívne</span></div>
+            <label class="cookie-toggle disabled"><input type="checkbox" checked disabled /><span class="cookie-slider"></span></label>
+          </div>
+          <p>Potrebné pre fungovanie stránky (jazyk, súhlas s cookies, formulárová relácia).</p>
+        </div>
+        <div class="cookie-category">
+          <div class="cookie-category-head">
+            <div><strong>Analytické</strong></div>
+            <label class="cookie-toggle"><input type="checkbox" id="catAnalytics" /><span class="cookie-slider"></span></label>
+          </div>
+          <p>Anonymné štatistiky o návštevnosti (Google Analytics).</p>
+        </div>
+        <div class="cookie-category">
+          <div class="cookie-category-head">
+            <div><strong>Marketingové</strong></div>
+            <label class="cookie-toggle"><input type="checkbox" id="catMarketing" /><span class="cookie-slider"></span></label>
+          </div>
+          <p>Cookies pre reklamu a remarketing (Meta Pixel, Google Ads).</p>
+        </div>
+      </div>
+      <div class="cookie-modal-footer">
+        <button type="button" class="btn btn-outline" id="cookieModalReject">Iba nevyhnutné</button>
+        <button type="button" class="btn btn-primary" id="cookieModalSave">Uložiť výber</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="cookies.js"></script>
 </body>
 </html>
